@@ -1,0 +1,17 @@
+{
+  "name": "visual-novel-builder",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tsconfig": "workspace:*",
+    "typescript": "^4.9.5",
+    "vitest": "^0.28.5"
+  }
+}
