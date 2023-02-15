@@ -4,9 +4,11 @@ import {
   BranchPanel,
   FinalPanel,
   ImmediatePanel,
+  InputPanel,
   ProcessedBranchPanel,
   ProcessedFinalPanel,
   ProcessedImmediatePanel,
+  ProcessedInputPanel,
   ProcessedVNPanel,
   VNPanel,
 } from "./panels";
@@ -52,6 +54,22 @@ export const createVisualNovel = <StateT, DataT>(
     };
   };
 
+  const resolveInputPanel = (
+    panel: InputPanel<StateT, DataT>
+  ): ProcessedInputPanel<StateT, DataT> => {
+    const { id, data, prompt, onEnter } = panel;
+    const handleFlexibleParameter = getFlexibleParameterHandler(
+      store.getSnapshot()
+    );
+
+    return {
+      id,
+      data: handleFlexibleParameter(data),
+      prompt: handleFlexibleParameter(prompt),
+      onEnter: onEnter,
+    };
+  };
+
   const resolveFinalPanel = (
     panel: FinalPanel<StateT, DataT>
   ): ProcessedFinalPanel<StateT, DataT> => {
@@ -83,6 +101,9 @@ export const createVisualNovel = <StateT, DataT>(
     if ("isFinal" in rawPanel) {
       return resolveFinalPanel(rawPanel);
     }
+    if ("prompt" in rawPanel) {
+      return resolveInputPanel(rawPanel);
+    }
     throw new Error(`Panel with id ${id} is not a valid panel`);
   };
 
@@ -110,6 +131,7 @@ export const createVisualNovel = <StateT, DataT>(
       subscribers.add(subscriber);
       return () => subscribers.delete(subscriber);
     },
+    transition,
     getStoreSnapshot: store.getSnapshot,
     subscribeStore: store.subscribe,
     initialPanel: currentPanel,
