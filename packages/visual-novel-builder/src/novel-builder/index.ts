@@ -13,11 +13,17 @@ import {
   VNPanel,
 } from "./panels";
 
-export const createVisualNovel = <StateT, DataT>(
-  initialId: string,
-  initialState: StateT,
-  panels: VNPanel<StateT, DataT>[]
-) => {
+export type VNOptions<StateT, DataT> = {
+  initialId: string;
+  initialState: StateT;
+  panels: VNPanel<StateT, DataT>[];
+};
+
+export const createVisualNovel = <StateT, DataT>({
+  initialId,
+  initialState,
+  panels,
+}: VNOptions<StateT, DataT>) => {
   const panelMap = new Map<string, VNPanel<StateT, DataT>>();
   panels.forEach((state) => panelMap.set(state.id, state));
   const store = createStore(initialState);
@@ -129,12 +135,13 @@ export const createVisualNovel = <StateT, DataT>(
   return {
     subscribe: (subscriber: (panel: VNPanel<StateT, DataT>) => void) => {
       subscribers.add(subscriber);
-      return () => subscribers.delete(subscriber);
+      return () => {
+        subscribers.delete(subscriber);
+      };
     },
     transition,
     getStoreSnapshot: store.getSnapshot,
     subscribeStore: store.subscribe,
-    initialPanel: currentPanel,
     getCurrentPanel: () => currentPanel,
   };
 };
