@@ -1,5 +1,5 @@
-import { use, useEffect, useRef, useState } from "react";
-import { createVisualNovel, VNPanel } from "visual-novel-builder";
+import { useEffect, useRef, useState } from "react";
+import { createVisualNovel, ProcessedVNPanel } from "visual-novel-builder";
 import { panels, VNData } from "./panels";
 import { initialState, VNState } from "./state";
 
@@ -11,7 +11,7 @@ const useNovel = () => {
       panels,
     })
   );
-  const [panel, setPanel] = useState<VNPanel<VNState, VNData>>(
+  const [panel, setPanel] = useState<ProcessedVNPanel<VNState, VNData>>(
     novelRef.current.getCurrentPanel
   );
 

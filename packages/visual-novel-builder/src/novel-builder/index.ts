@@ -27,7 +27,9 @@ export const createVisualNovel = <StateT, DataT>({
   const panelMap = new Map<string, VNPanel<StateT, DataT>>();
   panels.forEach((state) => panelMap.set(state.id, state));
   const store = createStore(initialState);
-  const subscribers = new Set<(panel: VNPanel<StateT, DataT>) => void>();
+  const subscribers = new Set<
+    (panel: ProcessedVNPanel<StateT, DataT>) => void
+  >();
 
   const resolveImmediatePanel = (
     panel: ImmediatePanel<StateT, DataT>
@@ -137,7 +139,9 @@ export const createVisualNovel = <StateT, DataT>({
   };
 
   return {
-    subscribe: (subscriber: (panel: VNPanel<StateT, DataT>) => void) => {
+    subscribe: (
+      subscriber: (panel: ProcessedVNPanel<StateT, DataT>) => void
+    ) => {
       subscribers.add(subscriber);
       return () => {
         subscribers.delete(subscriber);
