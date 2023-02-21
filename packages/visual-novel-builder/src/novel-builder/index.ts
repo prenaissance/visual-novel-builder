@@ -38,6 +38,7 @@ export const createVisualNovel = <StateT, DataT>({
     );
 
     return {
+      tag: "immediate",
       id,
       data: handleFlexibleParameter(data),
       next: handleFlexibleParameter(next),
@@ -54,6 +55,7 @@ export const createVisualNovel = <StateT, DataT>({
     );
 
     return {
+      tag: "branch",
       id,
       data: handleFlexibleParameter(data),
       choices: handleFlexibleParameter(choices),
@@ -69,6 +71,7 @@ export const createVisualNovel = <StateT, DataT>({
     );
 
     return {
+      tag: "input",
       id,
       data: handleFlexibleParameter(data),
       prompt: handleFlexibleParameter(prompt),
@@ -85,6 +88,7 @@ export const createVisualNovel = <StateT, DataT>({
     );
 
     return {
+      tag: "final",
       id,
       data: handleFlexibleParameter(data),
       onEnter: onEnter,

@@ -11,6 +11,7 @@ export type ImmediatePanel<StateT, DataT> = {
 };
 
 export type ProcessedImmediatePanel<StateT, DataT> = {
+  tag: "immediate";
   id: string;
   data?: DataT;
   onEnter?: FactoryFunction<StateT, StateT>;
@@ -32,6 +33,7 @@ export type BranchPanel<StateT, DataT> = {
 };
 
 export type ProcessedBranchPanel<StateT, DataT> = {
+  tag: "branch";
   id: string;
   data?: DataT;
   onEnter?: FactoryFunction<StateT, StateT>;
@@ -50,6 +52,7 @@ export type InputPanel<StateT, DataT> = {
 };
 
 export type ProcessedInputPanel<StateT, DataT> = {
+  tag: "input";
   id: string;
   data?: DataT;
   onEnter?: FactoryFunction<StateT, StateT>;
@@ -64,6 +67,7 @@ export type FinalPanel<StateT, DataT> = {
 };
 
 export type ProcessedFinalPanel<StateT, DataT> = {
+  tag: "final";
   id: string;
   data?: DataT;
   onEnter?: FactoryFunction<StateT, StateT>;
