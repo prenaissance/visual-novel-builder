@@ -679,7 +679,7 @@ export const panels: VNPanel<VNState, VNData>[] = [
     next: "boss:promotion:responsibilities-2",
   },
   {
-    id: "boss:promotion:responsibilities-1",
+    id: "boss:promotion:responsibilities-2",
     data: {
       author: "Boss",
       text: "You might need to work over the 8 daily hours more often. Of course, no effort goes unpaid.",
@@ -775,14 +775,14 @@ export const panels: VNPanel<VNState, VNData>[] = [
   {
     id: "stoicism:summary-2",
     data: {
-      text: "Patrick, on the other hand, was diagnosed with schizophrenia and was put in a psych ward. While no one from his work collogues knew, he threatened to kill hookers and hobos in the city. During his interrogation he plead of being a serial killer, but no evidence was found that he actually killed anyone.",
+      text: "Patrick, on the other hand, was diagnosed with schizophrenia and was put in a psych ward. While no one from his work colleagues knew, he threatened to kill hookers and hobos in the city. During his interrogation he plead of being a serial killer, but no evidence was found that he actually killed anyone.",
     },
     next: "stoicism:summary-3",
   },
   {
     id: "stoicism:summary-3",
     data: {
-      text: "Ryan Gosling could have helped Patrick by reporting the situation he saw that night, but he chose not to. He is a stoic and the thoughts of the past do not affect him. He often tells his students about this story and once in a while visits him ath the mental facility.",
+      text: "Ryan Gosling could have helped Patrick by reporting the situation he saw that night, but he chose not to. He is a stoic and the thoughts of the past do not affect him. He often tells his students about this story and once in a while visits him at the mental facility.",
     },
     next: "stoicism:school",
   },
