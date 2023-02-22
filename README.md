@@ -1,6 +1,8 @@
-# Turborepo starter
+# Visual Novel Builder
 
-This is an official pnpm starter turborepo.
+This is a monorepo for an npm package and a Next.js example app. The visual novel web app is hosted on Vercel at [https://literally-me-visual-novel.vercel.app/](https://literally-me-visual-novel.vercel.app/). The feature set is far from complete and the package is not ready to be published to npm. I did not have enough time to bring this project to a publishable MVP state due to extremely tight deadlines. For the same reason I will most probably not finish this in the near future.
+
+Do not take the code quality seriously, same reasons as above.
 
 ## What's inside?
 
@@ -71,3 +73,4 @@ Learn more about the power of Turborepo:
 - [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
 - [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
 - [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+
