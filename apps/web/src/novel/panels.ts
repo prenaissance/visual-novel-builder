@@ -200,7 +200,7 @@ export const panels: VNPanel<VNState, VNData>[] = [
       author: "Patrick",
       text: "Thanks mate. I'll return the favor one day.",
     },
-    next: "office:patrick:deal",
+    next: "office:patrick:deal-making",
   },
   {
     id: "office:patrick:deal:no",
@@ -211,7 +211,7 @@ export const panels: VNPanel<VNState, VNData>[] = [
     next: "office:gosling:deal",
   },
   {
-    id: "office:bateman:deal",
+    id: "office:bateman:deal-making",
     data: {
       text: "",
       bgImageUrl: "/images/bateman-deal.png",
@@ -440,7 +440,7 @@ export const panels: VNPanel<VNState, VNData>[] = [
     id: "drive:gas-station:leave-contemplation",
     data: {
       text: "Time is almost up. They are still inside.",
-      bgImageUrl: "gosling-looking-at-watch.png",
+      bgImageUrl: "/images/gosling-looking-at-watch.png",
     },
     next: "drive:gas-station:leave-decision",
   },
@@ -533,8 +533,8 @@ export const panels: VNPanel<VNState, VNData>[] = [
   {
     id: "drive:home:alley",
     data: {
-      bgImageUrl: "/images/alley.png",
-      text: "I am walking through the dark alleys. I took this coming back from multiple gigs already and know it by heart. I am not afraid of the dark or the city at night, but my only fear is getting caught. My actions are not legal, but I am not a criminal. I am just a driver.",
+      bgImageUrl: "/images/dark-alley.png",
+      text: "I am walking through the dark alley. I took this coming back from multiple gigs already and know it by heart. I am not afraid of the dark or the city at night, but my only fear is getting caught. My actions are not legal, but I am not a criminal. I am just a driver.",
     },
     next: "drive:home::alley:sound",
   },
@@ -587,7 +587,7 @@ export const panels: VNPanel<VNState, VNData>[] = [
   {
     id: "psycho:peek",
     data: {
-      bgImageUrl: "/images/gosling-peek",
+      bgImageUrl: "/images/gosling-peek.png",
       text: "What did I just see! This must be a misunderstanding and I'm seeing things out of context. I always trusted Patrick and he is an excellent worker! He probably has a sick fantasy for this and I found his guilty pleasure. Should I interfere?",
     },
     choices: [
@@ -596,7 +596,7 @@ export const panels: VNPanel<VNState, VNData>[] = [
         next: "psycho:conflict",
       },
       {
-        text: "Gp home",
+        text: "Go home",
         next: "psycho:home",
         onChoose: (state) => ({
           ...state,
@@ -646,7 +646,7 @@ export const panels: VNPanel<VNState, VNData>[] = [
     next: "boss:promotion:project-thanks",
   },
   {
-    id: "boss:promotion:project",
+    id: "boss:promotion:project-thanks",
     data: {
       author: "Ryan Gosling",
       text: "Wow, Boss, I am flattered. I did my best to help with the last project and I am extremely pleased that you are giving me this opportunity. I will do my best to make you proud.",
