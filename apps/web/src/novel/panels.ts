@@ -200,7 +200,7 @@ export const panels: VNPanel<VNState, VNData>[] = [
       author: "Patrick",
       text: "Thanks mate. I'll return the favor one day.",
     },
-    next: "office:patrick:deal-making",
+    next: "office:bateman:deal-making",
   },
   {
     id: "office:patrick:deal:no",
