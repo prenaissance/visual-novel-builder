@@ -4,10 +4,8 @@ import {
 } from "../common/flexible-parameter";
 
 export function createStore<StateT>(initialState: StateT) {
-  const handleFlexibleParameter =
-    getFlexibleParameterHandler<StateT>(initialState);
-
   let state = initialState;
+
   const subscribers = new Set<(state: StateT) => void>();
 
   return {
@@ -17,7 +15,7 @@ export function createStore<StateT>(initialState: StateT) {
     },
     getSnapshot: () => state,
     setState: (stateSetter: FlexibleParameter<StateT, StateT>) => {
-      state = handleFlexibleParameter(stateSetter);
+      state = getFlexibleParameterHandler(state)(stateSetter);
       subscribers.forEach((subscriber) => subscriber(state));
     },
   };
