@@ -261,6 +261,7 @@ export const panels: VNPanel<VNState, VNData>[] = [
   {
     id: "office:waving",
     data: ({ egoism }) => ({
+      bgImageUrl: "/images/bateman-waving.png",
       author: "Patrick",
       text:
         egoism > 0
@@ -408,7 +409,7 @@ export const panels: VNPanel<VNState, VNData>[] = [
     id: "drive:gas-station",
     data: {
       author: "Ryan Gosling",
-      text: "This is the place. I stay here and wait for 5 minutes - no more no less, then I'll drive.",
+      text: "This is the place. I stay here and wait for 5 minutes - no more no less, then I'll drive. What happens afterwards is not my responsibility. Be on time if you want me to be the one who gets you out of trouble.",
       bgImageUrl: "/images/gas-station.png",
     },
     next: "drive:gas-station:robbery",
@@ -501,7 +502,7 @@ export const panels: VNPanel<VNState, VNData>[] = [
     id: "drive:gas-station:robbers-in-car",
     data: {
       author: "Male robber",
-      text: "Dude! Why didn't you help us! Drive away faster",
+      text: "Dude! Why didn't you help us! Drive away faster!",
     },
     next: "drive:speeding:robbers-reply",
   },
@@ -525,9 +526,280 @@ export const panels: VNPanel<VNState, VNData>[] = [
     id: "drive:home:parking",
     data: {
       bgImageUrl: "/images/parking.png",
-      text: "I parked the car time to go through the dark alleys so I don't get noticed.",
+      text: "I parked the car in the underground parking as usual. My day job coworkers do not notice that the car I use to get blood money is kept safe in the parking. The perfect spot that no one would suspect to be used for such a purpose.",
     },
     next: "drive:home:alley",
+  },
+  {
+    id: "drive:home:alley",
+    data: {
+      bgImageUrl: "/images/alley.png",
+      text: "I am walking through the dark alleys. I took this coming back from multiple gigs already and know it by heart. I am not afraid of the dark or the city at night, but my only fear is getting caught. My actions are not legal, but I am not a criminal. I am just a driver.",
+    },
+    next: "drive:home::alley:sound",
+  },
+  {
+    id: "drive:home::alley:sound",
+    data: {
+      text: "Did I hear something there? It sounded like the voice of a woman. I should check it out.",
+    },
+    next: "psycho:woman",
+  },
+  {
+    id: "psycho:woman",
+    data: {
+      bgImageUrl: "/images/bateman-homeless.png",
+      text: "That is Patrick! What is he doing at this hour? He is usually at the club or ar fancy restaurants with his friends from work. He is not the type to hang out in the streets! And that woman, she looks like a prostitute. What the hell are they doing!?",
+    },
+    next: "psycho:woman:listen",
+  },
+  {
+    id: "psycho:woman:listen",
+    data: {
+      text: "It's none of my business, but I should listen to what they are talking about.",
+    },
+    next: "psycho:woman:dialog-1",
+  },
+  {
+    id: "psycho:woman:dialog-1",
+    data: {
+      author: "Patrick",
+      text: "Are you willing to accept this money? Here, take it. I know you are in need.",
+    },
+    next: "psycho:woman:dialog-2",
+  },
+  {
+    id: "psycho:woman:dialog-2",
+    data: {
+      author: "Prostitute",
+      text: "Get away from me!",
+    },
+    next: "psycho:woman:dialog-3",
+  },
+  {
+    id: "psycho:woman:dialog-3",
+    data: {
+      author: "Patrick",
+      text: "Stupid bitch. I am going to murder you with my bare fists. I am going to kill you tonight for your sins.",
+    },
+    next: "psycho:peek",
+  },
+  {
+    id: "psycho:peek",
+    data: {
+      bgImageUrl: "/images/gosling-peek",
+      text: "What did I just see! This must be a misunderstanding and I'm seeing things out of context. I always trusted Patrick and he is an excellent worker! He probably has a sick fantasy for this and I found his guilty pleasure. Should I interfere?",
+    },
+    choices: [
+      {
+        text: "Face Patrick",
+        next: "psycho:conflict",
+      },
+      {
+        text: "Gp home",
+        next: "psycho:home",
+        onChoose: (state) => ({
+          ...state,
+          egoism: state.egoism + 1,
+        }),
+      },
+    ],
+  },
+  {
+    id: "psycho:home",
+    data: {
+      text: "I heard too much today! I got into others' stuff and heard things I did not want to hear.",
+    },
+    next: "home:entrance",
+  },
+  {
+    id: "home:entrance",
+    data: {
+      bgImageUrl: "/images/gosling-home.png",
+      author: "Ryan Gosling",
+      text: "And finally I'm home. I'll need to recover heavily from this trip.",
+    },
+    next: "home:sleep",
+  },
+  {
+    id: "home:sleep",
+    data: {
+      text: "Ryan Gosling slept till noon. The thoughts of this day gave him vivid nightmares.",
+    },
+    next: "home:time-pass",
+  },
+  {
+    id: "home:time-pass",
+    data: {
+      bgImageUrl: "/images/clock.png",
+      text: "All his weekend Ryan stayed home. The next Monday he went to work as usual. He did not tell anyone about what he saw Patrick do. He did not want to get involved. He is not a hero. He is just a driver.",
+    },
+    next: "boss:promotion",
+  },
+  {
+    id: "boss:promotion",
+    data: {
+      bgImageUrl: "/images/discussing-boss.png",
+      author: "Boss",
+      text: "Morning Ryan. As I promised, I will introduce you to the new project today. We are going to work with the biggest bank in Europe. They are going to open a new branch in this city and we are going to provide them with security services. We are going to be the first ones to work with them and we will get a lot of money for it. I am sure you will be happy with aiding them legally.",
+    },
+    next: "boss:promotion:project-thanks",
+  },
+  {
+    id: "boss:promotion:project",
+    data: {
+      author: "Ryan Gosling",
+      text: "Wow, Boss, I am flattered. I did my best to help with the last project and I am extremely pleased that you are giving me this opportunity. I will do my best to make you proud.",
+    },
+    next: "boss:promotion:offer",
+  },
+  {
+    id: "boss:promotion:offer",
+    data: {
+      author: "Boss",
+      text: "Ryan, I want to give you a promotion with this role. You will get paid twice as much, with a bit more responsibilities. Do you know your future responsibilities?",
+    },
+    choices: [
+      {
+        text: "Yes",
+        next: "boss:promotion:offer:accept",
+      },
+      {
+        text: "No",
+        next: "boss:promotion:responsibilities-1",
+      },
+    ],
+  },
+  {
+    id: "boss:promotion:responsibilities-1",
+    data: {
+      author: "Boss",
+      text: "For the new role, you'll have to talk with their representatives directly and delegate the information to your coworkers. You will become their manager.",
+    },
+    next: "boss:promotion:responsibilities-2",
+  },
+  {
+    id: "boss:promotion:responsibilities-1",
+    data: {
+      author: "Boss",
+      text: "You might need to work over the 8 daily hours more often. Of course, no effort goes unpaid.",
+    },
+    next: "boss:promotion:offer",
+  },
+  {
+    id: "boss:promotion:offer:accept",
+    data: {
+      bgImageUrl: "/images/gosling-office-smiling.png",
+      author: "Ryan Gosling",
+      text: "It is an honor, Boss. I accept the offer.",
+    },
+    next: "boss:promotion:offer:accept:thanks",
+  },
+  {
+    id: "boss:promotion:offer:accept:thanks",
+    data: {
+      author: "Boss",
+      text: "Thanks for your cooperation. You can go back to work and start your new role from tomorrow.",
+    },
+    next: "gosling:walk",
+  },
+  {
+    id: "gosling:walk",
+    data: {
+      bgImageUrl: "/images/gosling-walk.png",
+      text: "Ryan went home after work by foot. He was thinking about the new role and how he will handle it. With the extra money, he might be able to quit his night job and still reach his dream in a reasonable time.",
+    },
+    next: ({ egoism }) =>
+      egoism >= 3 ? "gosling:about-to-be-attacked" : "gosling:happy-walk",
+  },
+  {
+    id: "gosling:about-to-be-attacked",
+    data: {
+      text: "Ryan is daydreaming about his dreams coming true. He is not paying attention to his surrounding and something bad is about to appear out of the crowd.",
+    },
+    next: "gosling:attacked",
+  },
+  {
+    id: "gosling:attacked",
+    data: {
+      bgImageUrl: "/images/gosling-fight.png",
+      text: "Ryan got unexpectedly punched in the face. He tries to defend himself and return a punch back, but the attacker is to quick and he is knocked to the ground.",
+    },
+    next: "gosling:attacked:remark",
+  },
+  {
+    id: "gosling:attacked:remark",
+    data: {
+      text: "He looks at the attackers face and recognizes him. It is the same guy whom he helped rob a gas station last Friday. He knows that he is in trouble and he is about to get killed.",
+    },
+    next: "gosling:dying",
+  },
+  {
+    id: "gosling:dying",
+    data: {
+      bgImageUrl: "/images/gosling-dying.png",
+      text: "Ryan fell to the ground. The attacker stabbed him in the gut and the punches he took made all his muscles feeble. This is the end of his life.",
+    },
+    next: "gosling:dying:response",
+  },
+  {
+    id: "gosling:dying:response",
+    data: {
+      author: "Male robber",
+      text: "If only you were a little kinder Gosling, and not so egocentric and mysterious. You betrayed people and expected to live a happy life after that.",
+    },
+    next: "egoistic-ending",
+  },
+  {
+    id: "egoistic-ending",
+    data: {
+      text: "The end. Reached the egoistic ending.",
+    },
+    isFinal: true,
+  },
+  {
+    id: "gosling:happy-walk",
+    data: {
+      text: "Many thoughts were going through Ryan's head. He knows he has a bright future ahead.",
+    },
+    next: "stoicism:summary-1",
+  },
+  {
+    id: "stoicism:summary-1",
+    data: {
+      bgImageUrl: "/images/clock.png",
+      text: "Ryan Gosling worked hard at his business job. He lead the team through the 4 years of the project's existence and resigned when the deal with the collaborator ended. He had well above of what he needed to open his Stoicism school and get enough money from dividends to live comfortably.",
+    },
+    next: "stoicism:summary-2",
+  },
+  {
+    id: "stoicism:summary-2",
+    data: {
+      text: "Patrick, on the other hand, was diagnosed with schizophrenia and was put in a psych ward. While no one from his work collogues knew, he threatened to kill hookers and hobos in the city. During his interrogation he plead of being a serial killer, but no evidence was found that he actually killed anyone.",
+    },
+    next: "stoicism:summary-3",
+  },
+  {
+    id: "stoicism:summary-3",
+    data: {
+      text: "Ryan Gosling could have helped Patrick by reporting the situation he saw that night, but he chose not to. He is a stoic and the thoughts of the past do not affect him. He often tells his students about this story and once in a while visits him ath the mental facility.",
+    },
+    next: "stoicism:school",
+  },
+  {
+    id: "stoicism:school",
+    data: {
+      bgImageUrl: "/images/gosling-greece.png",
+      text: "Ryan Gosling opened his Stoicism school in Greece. He teaches his students about the philosophy and how to apply it in their daily lives. He is a very popular teacher and his students are very happy with his teachings.",
+    },
+    next: "stoicism:happy-ending",
+  },
+  {
+    id: "stoicism:happy-ending",
+    data: {
+      text: "The end. Reached the stoic ending.",
+    },
+    isFinal: true,
   },
   {
     id: "end",
