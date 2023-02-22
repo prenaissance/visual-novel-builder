@@ -3,6 +3,7 @@ export const initialState = {
   money: 0,
   items: [],
   isSleepy: false,
+  egoism: 0,
 };
 
 export type VNState = typeof initialState;

@@ -31,7 +31,7 @@ export default function Web() {
         Literally me
       </h1>
       <div
-        className="flex-1 relative shadow-2xl rounded-sm overflow-hidden"
+        className="flex-1 relative shadow-2xl rounded-sm overflow-hidden aspect-video"
         onClick={handleClick}
       >
         <Image
