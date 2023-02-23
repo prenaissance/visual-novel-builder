@@ -154,6 +154,7 @@ export const panels: VNPanel<VNState, VNData>[] = [
   {
     id: "office:patrick:nothing-much",
     data: {
+      author: "???",
       text: "Nothing much. Just excited for signing off the deal today. What is our ROI? 50%? 70%?",
     },
     next: "office:patrick:roi",
@@ -161,7 +162,7 @@ export const panels: VNPanel<VNState, VNData>[] = [
   {
     id: "office:patrick:roi",
     data: {
-      text: "I think it's 80%. We reallit hit the jackpot with this one. You're amazing for finding this CEO, half of his services are going to depend on our delivery and lawyers.",
+      text: "I think it's 80%. We really hit the jackpot with this one. You're amazing for finding this CEO, half of his services are going to depend on our delivery and lawyers.",
       author: "Patrick",
     },
     next: "office:patrick:deal",
@@ -169,6 +170,7 @@ export const panels: VNPanel<VNState, VNData>[] = [
   {
     id: "office:patrick:deal",
     data: {
+      author: "Patrick",
       text: "I have something to ask you. I'm not sure if you're aware, but I'm striking for a promotion. I think I deserve it and want the boss to know about my ambitions. Would you mind if I make the contract with the client today?",
     },
     choices: [
@@ -254,6 +256,7 @@ export const panels: VNPanel<VNState, VNData>[] = [
   {
     id: "office:deal:boss:thanks",
     data: {
+      author: "???",
       text: "Thanks, boss. I'll see you next week.",
     },
     next: "office:waving",
@@ -385,7 +388,7 @@ export const panels: VNPanel<VNState, VNData>[] = [
     id: "drive:pickup:chat-2",
     data: {
       author: "Female robber",
-      text: "If we don't knock out the guard, we'll hav to go to the back door and steal the safe from there. Make a distraction when we give you the signal.",
+      text: "If we don't knock out the guard, we'll have to go to the back door and steal the safe from there. Make a distraction when we give you the signal.",
     },
     next: "drive:pickup:chat-2:reply",
   },
