@@ -802,10 +802,89 @@ export const panels: VNPanel<VNState, VNData>[] = [
     isFinal: true,
   },
   {
-    id: "end",
+    id: "psycho:conflict",
     data: {
-      text: "Goodbye, world!",
+      bgImageUrl: "/images/gosling-bateman-conflict.png",
+      author: "Ryan Gosling",
+      text: "Patrick! What are you doing! How are you talking to that woman!?",
+    },
+    next: "psycho:conflict:response",
+  },
+  {
+    id: "psycho:conflict:response",
+    data: {
+      author: "Patrick Bateman",
+      text: "What are you talking about? I am just talking to her. I am not doing anything wrong.",
+    },
+    next: "psycho:conflict:response:2",
+  },
+  {
+    id: "psycho:conflict:response:2",
+    data: {
+      author: "Ryan Gosling",
+      text: "I heard everthing. Quit pretending. You are a psycho and you are going to kill her.",
+    },
+    next: "psycho:conflict:response:3",
+  },
+  {
+    id: "psycho:conflict:response:3",
+    data: {
+      author: "Patrick Bateman",
+      text: "I am not a psycho. I am a normal person. You are the one who is crazy if you think scum like her deserves to live in this society. I am going to cleanse the world of people like her.",
+    },
+    next: "psycho:conflict:response:4",
+  },
+  {
+    id: "psycho:conflict:response:4",
+    data: {
+      author: "Ryan Gosling",
+      text: "What you are doing is illegal! I am going to call the police on you!",
+    },
+    next: "psycho:conflict:response:5",
+  },
+  {
+    id: "psycho:conflict:response:5",
+    data: {
+      author: "Patrick Bateman",
+      text: "Nonsense. Society has wrapped your perception of reality. Look at us, we are bringing people together and developing our country's economy. We contribute to this society and parasites like her want to take all the benefits without while living off our hard work! Get back to your senses, Gosling!",
+    },
+    choices: [
+      {
+        text: "Call the police",
+        next: "psycho:conflict:call",
+        onChoose: (state) => ({
+          ...state,
+          egoism: state.egoism - 3,
+        }),
+      },
+      {
+        text: "Punch the woman",
+        next: "open-ending",
+      },
+    ],
+  },
+  {
+    id: "open-ending",
+    data: {
+      bgImageUrl: "/images/gosling-aggresive-woman.png",
+      text: "The end. I am advised not to elaborate on this ending.",
     },
     isFinal: true,
+  },
+  {
+    id: "psycho:conflict:call",
+    data: {
+      bgImageUrl: "/images/gosling-call.png",
+      author: "Ryan Gosling",
+      text: "Hello, 911? A man is trying to assault a woman near the central office building. I am at the scene with the victim. Please hurry!",
+    },
+    next: "psycho:conflict:call:response",
+  },
+  {
+    id: "psycho:conflict:call:response",
+    data: {
+      text: "As Ryan was talking to the police, Patrick Bateman ran away. The woman said she can get home by herself and thanked Ryan for his help. Ryan needed to go back home and get some sleep.",
+    },
+    next: "home:sleep",
   },
 ];
