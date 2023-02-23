@@ -10,11 +10,11 @@ This turborepo uses [pnpm](https://pnpm.io) as a package manager. It includes th
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app
 - `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
+- `ui`: a stub React component library
 - `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo
+- `visual-novel-builder`: a local library for managing VN state
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
@@ -43,6 +43,14 @@ To develop all apps and packages, run the following command:
 cd my-turborepo
 pnpm run dev
 ```
+
+### Export
+
+The `web` app can be exported to a static site. To do so, run the following command:
+
+`pnpm run export`
+
+and the static site will be exported to the `out` directory.
 
 ### Remote Caching
 
